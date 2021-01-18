@@ -1,4 +1,4 @@
-# 🥪 aave-credit-dele 🥪
+# 🥪 aave-credit-deli 🥪
 
 A "delicatessen" for native credit delegation on Aave v2.
 
