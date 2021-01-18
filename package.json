@@ -1,7 +1,7 @@
 {
   "name": "aave-credit-dele",
   "version": "0.1.0",
-  "description": "A \"ready-to-eat\"(🥪)/ready-to-delegate native credit delegation interface for Aave v2 featuring capital isolation of borrowed funds to protect depositor's from credit risk.",
+  "description": "A \"ready-to-eat\"(🥪)/ready-to-delegate native credit delegation app for Aave v2 featuring capital isolation of borrowed funds to protect depositor's from credit risk.",
   "main": "index.js",
   "repository": "https://github.com/platocrat/aave-credit-dele.git",
   "author": "platocrat [platocrat@tuta.io]",
