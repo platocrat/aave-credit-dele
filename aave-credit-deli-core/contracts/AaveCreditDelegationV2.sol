@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: agpl-3.0
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.1;
 
 import {
@@ -65,7 +65,12 @@ contract AaveCreditDelegationV2 is CreditDeliStorage {
 
     // ~~~~~~~~~~~~~~~~~~~~~~  Delegation logic events  ~~~~~~~~~~~~~~~~~~~~~~~~
     /**
-     * @dev Emitted when a delegation is created.
+     * @dev -------------------------- TODO ---------------------------------
+     * Simplify all event objects by passing in the whole `delegation` object
+     * into each event. Then, use only what is needed for each event
+     * ----------------------------------------------------------------------
+     *
+     * Emitted when a delegation is created.
      * @param asset The address of the asset used in the delegation.
      * @param delegator The address of the creditor.
      * @param delegate The address of the borrower.
@@ -666,10 +671,14 @@ contract AaveCreditDelegationV2 is CreditDeliStorage {
         // if (borrowerAllowances[msg.sender]) {}
 
         if (_canPullFundsFromDelegate) {
-            IERC20(_asset).transferFrom(delegate, address(this), _repayAmount);
+            IERC20(_asset).safeTransferFrom(
+                delegate,
+                address(this),
+                _repayAmount
+            );
         }
 
-        IERC20(_asset).approve(address(lendingPool), _repayAmount);
+        IERC20(_asset).safeApprove(address(lendingPool), _repayAmount);
         lendingPool.repay(_asset, _repayAmount, 1, address(this));
 
         // Update the state of the delegation object.
